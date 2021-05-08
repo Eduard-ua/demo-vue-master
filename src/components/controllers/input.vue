@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input v-model="text" v-on:input="$emit('change=in-input', text)"/>
-        <p>{{ text }}</p>
+        <input class="customInput" v-model="text" v-on:input="$emit('change-in-input', text)"/>
+        <!-- <p>{{ text }}</p> -->
     </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
     name: 'CustomInput',
     data() {
         return {
-            text: ' '
+            text: ''
         }
     }    
 }
@@ -19,5 +19,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+    .customInput {
+        margin: 10px;
+        border: 2px solid green;
+    }
 </style>

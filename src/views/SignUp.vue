@@ -1,8 +1,8 @@
 <template>
   <div> 
     <h1>Sign Up</h1>
-    <CustomInput />
-    <CustomInput />
+    <CustomInput v-on:change-in-input="getName"/>
+    <CustomInput v-on:change-in-input="getSurname"/>
     <button class="my-button" @click="submit">
       One button
     </button>
@@ -16,10 +16,24 @@ export default {
   components: {
     CustomInput,
   },
+  data() {
+    return {
+      dataForSubmit: {
+        fname: '',
+        lname: '',
+      }
+    }
+  },
   methods: {
     async submit () {
-      console.log('tik');
-    }  
+      console.log(this.dataForSubmit);
+    },
+    getName(data) {
+      this.dataForSubmit.fname = data
+    },
+    getSurname(data) {
+      this.dataForSubmit.lname = data
+    }
   }
 }
 </script>
