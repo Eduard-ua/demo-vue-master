@@ -11,6 +11,10 @@
 
 <script>
 import CustomInput from '../components/controllers/input';
+// import axios from 'axios';
+import apiService from '../helpers/api';
+
+
 export default {
   name: 'SignUp',
   components: {
@@ -21,12 +25,22 @@ export default {
       dataForSubmit: {
         fname: '',
         lname: '',
+        active: true,
       }
     }
   },
   methods: {
     async submit () {
-      console.log(this.dataForSubmit);
+     // await axios.get('http://localhost:3001/user/1').then((res) => console.log(res, 'res')).cath((err) => console.log(err, 'err'));
+      //console.log(this.dataForSubmit);
+      apiService.post('/user', this.dataForSubmit)
+        .then(res => {
+          console.log('ok');
+          console.log(res.data);
+        })
+        .catch((err) => {
+          alert(err.response.data)
+        });
     },
     getName(data) {
       this.dataForSubmit.fname = data
