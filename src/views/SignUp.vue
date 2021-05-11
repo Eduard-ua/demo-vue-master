@@ -34,9 +34,8 @@ export default {
      // await axios.get('http://localhost:3001/user/1').then((res) => console.log(res, 'res')).cath((err) => console.log(err, 'err'));
       //console.log(this.dataForSubmit);
       apiService.post('/user', this.dataForSubmit)
-        .then(res => {
-          console.log('ok');
-          console.log(res.data);
+        .then(() => {
+          this.$router.push('users');//after add users - redirect to users
         })
         .catch((err) => {
           alert(err.response.data)
